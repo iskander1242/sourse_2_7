@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+
+        width="100%" height="100%">
+
+    <fx:Metadata>
+        [Event(name="numpadClicked", type="view.numpad.NumpadEvent")]
+    </fx:Metadata>
+
+    <fx:Script><![CDATA[
+        public function clickHandler(e:MouseEvent):void {
+            var label:String = (e.target as Button).label;
+            var numpadEvent:NumpadEvent = new NumpadEvent(NumpadEvent.KEY);
+            numpadEvent.value = label;
+            dispatchEvent(numpadEvent);
+        }
+        ]]></fx:Script>
+
+    <s:VGroup verticalCenter="0" horizontalCenter="0">
+        <s:HGroup>
+            <s:Button label="7"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="8"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="9"
+                      click="clickHandler(event)"
+                      height="60"/>
+        </s:HGroup>
+        <s:HGroup>
+            <s:Button label="4"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="5"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="6"
+                      click="clickHandler(event)"
+                      height="60"/>
+        </s:HGroup>
+        <s:HGroup>
+            <s:Button label="1"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="2"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="3"
+                      click="clickHandler(event)"
+                      height="60"/>
+        </s:HGroup>
+        <s:HGroup>
+            <s:Button label="Сброс"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="0"
+                      click="clickHandler(event)"
+                      height="60"/>
+            <s:Button label="Ввод"
+                      click="clickHandler(event)"
+                      height="60"/>
+        </s:HGroup>
+    </s:VGroup>
+
+</s:Group>

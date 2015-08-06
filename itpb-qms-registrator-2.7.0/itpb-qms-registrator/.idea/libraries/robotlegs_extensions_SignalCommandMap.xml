@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="robotlegs-extensions-SignalCommandMap" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/robotlegs-extensions-SignalCommandMap-v1.0.0.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

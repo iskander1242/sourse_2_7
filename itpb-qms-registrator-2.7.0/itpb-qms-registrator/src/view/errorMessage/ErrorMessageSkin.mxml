@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  Created by designer4 on 14.07.14.
+-->
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+    <fx:Metadata>
+        [HostComponent("view.errorMessage.ErrorMessageComponent")]
+    </fx:Metadata>
+
+    <s:Group width="100%"
+              height="100%"
+              horizontalCenter="0"
+              verticalCenter="0"
+              visible="{hostComponent.showErrorMessage}"
+              includeInLayout="{hostComponent.showErrorMessage}">
+
+        <s:Rect id="background" width="100%" height="100%">
+            <s:fill>
+                <s:SolidColor color="0xFFFFFF"/>
+            </s:fill>
+        </s:Rect>
+            <s:Label textAlign="center"
+                     horizontalCenter="0"
+                     verticalCenter="0"
+                     text="{hostComponent.errorMessage}"
+                     width="80%" maxDisplayedLines="5"
+                     fontSize="26" fontFamily="Verdana"/>
+    </s:Group>
+
+
+</s:Skin>

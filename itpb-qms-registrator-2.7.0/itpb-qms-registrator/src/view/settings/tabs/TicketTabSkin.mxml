@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+
+        width="100%" height="100%">
+
+    <fx:Metadata><![CDATA[
+        [HostComponent("view.settings.tabs.TicketTab")]
+    ]]></fx:Metadata>
+
+    <fx:Declarations>
+        <s:RadioButtonGroup id="printerDefaults"/>
+    </fx:Declarations>
+
+    <fx:Script><![CDATA[
+        ]]></fx:Script>
+
+    <s:states>
+        <s:State name="normal"/>
+        <s:State name="disabled"/>
+    </s:states>
+
+    <s:VGroup width="100%"
+              top="-6" right="4" bottom="4" left="4">
+
+        <!--<s:Panel title="Принтер" enabled="false"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+
+                <s:HGroup>
+                    <s:RadioButton id="defaultPrint"
+                                   groupName="printerDefaults"
+                                   label="По умолчанию"/>
+                    <s:RadioButton id="dontPrint"
+                                   groupName="printerDefaults"
+                                   label="Не печатать"/>
+
+                </s:HGroup>
+
+                <s:DropDownList id="printersList"
+                                width="100%"/>
+
+                <s:CheckBox id="stopWhenPaperOut"
+                            label="Приостановить регистрацию по окончанию рулона"
+                            selected="true" />
+
+            </s:VGroup>
+        </s:Panel>-->
+
+        <s:Panel title="Заголовок чека"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+
+                <s:HGroup width="100%" verticalAlign="baseline">
+                    <s:CheckBox id="line1Visible"
+                                label="Строка 1"
+                                selected="{hostComponent.line1Visible}"
+                                change="hostComponent.line1VisibleHandler(event) "/>
+                    <s:TextInput id="line1Text"
+                                 maxChars="128"
+                                 width="100%"
+                                 text="{hostComponent.line1Text}"
+                                 change="hostComponent.line1TextHandler(event)"/>
+                    <s:NumericStepper id="line1FontSize"
+                                      width="42"
+                                      minimum="6" maximum="56"
+                                      stepSize="1"
+                                      value="{hostComponent.line1FontSize}"
+                                      change="hostComponent.line1FontSizeHandler(event)"/>
+                    <s:Label text="пт"/>
+                </s:HGroup>
+
+                <s:HGroup width="100%" verticalAlign="baseline">
+                    <s:CheckBox id="line2Visible"
+                                label="Строка 2"
+                                selected="{hostComponent.line2Visible}"
+                                change="hostComponent.line2VisibleHandler(event) "/>
+                    <s:TextInput id="line2Text"
+                                 maxChars="128"
+                                 width="100%"
+                                 text="{hostComponent.line2Text}"
+                                 change="hostComponent.line2TextHandler(event)"/>
+                    <s:NumericStepper id="line2FontSize"
+                                      width="42"
+                                      minimum="6" maximum="56"
+                                      stepSize="1"
+                                      value="{hostComponent.line2FontSize}"
+                                      change="hostComponent.line2FontSizeHandler(event)"/>
+                    <s:Label text="пт"/>
+                </s:HGroup>
+
+                <s:HGroup>
+                    <s:CheckBox id="includeTicketNumber"
+                                label='Строка "Номер талона"'
+                                selected="{hostComponent.includeTicketNumber}"
+                                change="hostComponent.includeTicketNumberHandler(event)"/>
+                    <s:CheckBox id="includeTicketTime"
+                                label="Время регистрации"
+                                selected="{hostComponent.includeTicketTime}"
+                                change="hostComponent.includeTicketTimeHandler(event)"/>
+                </s:HGroup>
+
+            </s:VGroup>
+        </s:Panel>
+
+        <s:Panel title="Шрифт"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+
+                <s:HGroup width="100%"
+                          verticalAlign="baseline">
+                    <s:Label text="Основной шрифт" />
+                    <s:NumericStepper id="mainFontSize"
+                                      width="42"
+                                      minimum="6" maximum="56"
+                                      stepSize="1"
+                                      value="{hostComponent.mainFontSize}"
+                                      change="hostComponent.mainFontSizeHandler(event)"/>
+                    <s:Label text="пт"/>
+
+                    <s:Label text="Шрифт номера" />
+                    <s:NumericStepper id="ticketNumberFontSize"
+                                      width="42"
+                                      minimum="12" maximum="72"
+                                      stepSize="1"
+                                      value="{hostComponent.ticketNumberFontSize}"
+                                      change="hostComponent.ticketNumberFontSizeHandler(event)"/>
+                    <s:Label text="пт"/>
+                </s:HGroup>
+
+            </s:VGroup>
+        </s:Panel>
+
+        <s:Panel title="Надпись внизу чека"
+                 width="100%" height="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+
+                <s:TextArea id="ticketBottomText"
+                            maxChars="128"
+                            width="100%" height="100%"
+                            text="{hostComponent.ticketBottomText}"
+                            change="hostComponent.ticketBottomTextHandler(event)"/>
+
+            </s:VGroup>
+        </s:Panel>
+        <s:Panel title="Печать на принтер"
+                 width="100%" height="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+
+                <s:CheckBox id="noPrintToPrinter"
+                            label="Не печатать чек"
+                            selected="{hostComponent.noPrintToPrinter}"
+                            change="hostComponent.noPrintToPrinterHandler(event)"/>
+
+            </s:VGroup>
+        </s:Panel>
+
+    </s:VGroup>
+
+</s:Skin>

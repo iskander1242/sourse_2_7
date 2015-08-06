@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+    <fx:Metadata>
+        [HostComponent("view.copyright.CopyrightComponent")]
+    </fx:Metadata>
+
+    <s:Label id="copyrightLabel"
+             textAlign="center"
+             width="100%"
+             fontSize="{hostComponent.copyrightTextFontSize}" fontWeight="bold"
+             color="{hostComponent.copyrightTextColor}"
+             text="{ !hostComponent.errorMessage ? hostComponent.copyright : hostComponent.errorMessage }" />
+</s:Skin>

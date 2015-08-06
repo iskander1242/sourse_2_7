@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+  Created by designer4 on 14.07.14.
+-->
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+    <fx:Metadata>
+        [HostComponent("view.ApplicationQuit.ApplicationQuitComponent")]
+    </fx:Metadata>
+
+    <s:Button id="quitButton"
+              label="X"
+              width="50" height="50"
+              click="hostComponent.clickHandler(event)"/>
+</s:Skin>

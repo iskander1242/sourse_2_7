@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<local:RegistratorApp xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:local="*" xmlns:ticket="view.takeTicket.*" xmlns:view="view.*" xmlns:controller="controller.*"
+                      xmlns:background="view.background.*"
+                      xmlns:copyright="view.copyright.*" xmlns:applicationquit="view.ApplicationQuit.*"
+                      width="100%" height="100%"
+                      applicationComplete="applicationCompleteHandler(event)">
+
+    <fx:Script><![CDATA[
+        import mx.events.FlexEvent;
+
+        protected function applicationCompleteHandler(e:FlexEvent):void {
+            this.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+            //Mouse.hide();
+        }
+        ]]></fx:Script>
+
+
+    <controller:PreStartController id="preStartController"/>
+    <controller:KeyController id="keyController"/>
+    <controller:ServerConnectionController id="serverConnectionController"/>
+
+    <background:BackgroundComponent id="backgroundComponent"
+                                    width="100%" height="100%"
+                                    skinClass="view.background.BackgroundSkin"/>
+
+    <s:VGroup id="mainContainer"
+              gap="40"
+              horizontalCenter="0" verticalCenter="0"
+              horizontalAlign="center">
+
+        <ticket:TakeTicketComponent id="ticketComponent"
+                                skinClass="view.takeTicket.TakeTicketComponentSkin"/>
+
+    </s:VGroup>
+
+    <copyright:CopyrightComponent id="copyright"
+                                  width="100%"
+                                  horizontalCenter="0" bottom="10"
+                                  skinClass="view.copyright.CopyrightSkin"/>
+
+    <applicationquit:ApplicationQuitComponent id="appQuit"
+                                              top="0" right="0"
+                                              alpha="0"/>
+
+    <view:ConsoleComponent id="consoleComponent"
+                           width="400" height="250"/>
+
+</local:RegistratorApp>

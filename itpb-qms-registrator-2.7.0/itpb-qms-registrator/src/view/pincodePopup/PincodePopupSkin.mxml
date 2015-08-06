@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:numpad="view.numpad.*"
+
+        width="100%" height="100%"
+        creationComplete="creationCompleteHandler(event)">
+
+    <fx:Metadata>
+        [HostComponent("view.pincodePopup.PincodePopupComponent")]
+    </fx:Metadata>
+
+    <fx:Script><![CDATA[
+        import mx.events.FlexEvent;
+
+        import view.numpad.NumpadEvent;
+
+        private function creationCompleteHandler(e:FlexEvent):void {
+            numpadComponent.addEventListener(NumpadEvent.KEY, hostComponent.numpadEventHandler);
+            passwordField.setFocus();
+        }
+        ]]></fx:Script>
+
+    <s:VGroup id="container"
+              top="24" right="30" bottom="24" left="30"
+              horizontalCenter="0" verticalCenter="0"
+              horizontalAlign="center">
+
+            <s:TextInput id="passwordField"
+                         displayAsPassword="true"
+                         fontSize="24"
+                         height="30"
+                         text="{hostComponent.pincodeText}"
+                         change="hostComponent.passChangeHandler(event)"/>
+
+            <numpad:NumpadComponent id="numpadComponent"/>
+
+    </s:VGroup>
+
+</s:Skin>

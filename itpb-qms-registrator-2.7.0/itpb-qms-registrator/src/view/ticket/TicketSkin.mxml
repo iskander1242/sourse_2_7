@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+  Created by designer4 on 14.07.14.
+-->
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+    <fx:Metadata>
+        [HostComponent("view.ticket.TicketComponent")]
+    </fx:Metadata>
+
+    <s:VGroup id="mainVGroup"
+              gap="4"
+              top="24" right="32" bottom="24" left="32"
+              horizontalAlign="center">
+        <s:Rect id="background" width="100%" height="100%">
+            <s:fill>
+                <s:SolidColor color="0xFFFFFF"/>
+            </s:fill>
+        </s:Rect>
+
+        <s:Label id="line1" maxDisplayedLines="22"
+                 width="{hostComponent.textMaxWidth}"
+                 visible="{hostComponent.line1Visible}"
+                 fontFamily="Verdana" fontSize="{hostComponent.line1FontSize}"
+                 textAlign="center"
+                 text="{hostComponent.line1Text}"/>
+
+        <s:Label id="line2" maxDisplayedLines="22"
+                 width="{hostComponent.textMaxWidth}"
+                 visible="{hostComponent.line2Visible}"
+                 fontFamily="Verdana" fontSize="{hostComponent.line2FontSize}"
+                 textAlign="center"
+                 text="{hostComponent.line2Text}"/>
+
+        <s:VGroup>
+            <s:Spacer height="12"/>
+            <s:Label id="line3"
+                     width="100%"
+                     visible="{hostComponent.includeTicketNumber}"
+                     includeInLayout="{hostComponent.includeTicketNumber}"
+                     fontFamily="Verdana" fontSize="{hostComponent.mainFontSize}"
+                     text="Номер талона:" textAlign="center"/>
+
+            <s:Label id="line4"
+                     width="100%"
+                     textAlign="center"
+                     horizontalCenter="0"
+                     fontFamily="Arial Black" fontSize="{hostComponent.ticketNumberFontSize}"
+                     text="{hostComponent.ticketNo}"/>
+        </s:VGroup>
+
+        <s:Label maxDisplayedLines="8"
+                 width="{hostComponent.textMaxWidth}"
+                 visible="{hostComponent.includeTicketTime}"
+                 fontFamily="Verdana" fontSize="{hostComponent.mainFontSize}"
+                 text="Время регистрации:"
+                 textAlign="center"/>
+
+        <s:Label id="line5"
+                 maxDisplayedLines="8"
+                 width="{hostComponent.textMaxWidth}"
+                 visible="{hostComponent.includeTicketTime}"
+                 fontFamily="Verdana" fontSize="{hostComponent.mainFontSize}"
+                 text="{hostComponent.timeStamp}"
+                 textAlign="center"/>
+
+        <s:Label id="line6" maxDisplayedLines="77"
+                 width="{hostComponent.textMaxWidth}"
+                 fontFamily="Verdana" fontSize="{hostComponent.mainFontSize}"
+                 text="{hostComponent.ticketBottomText}"
+                 textAlign="center"/>
+    </s:VGroup>
+</s:Skin>

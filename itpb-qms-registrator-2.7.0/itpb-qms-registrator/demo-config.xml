@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RegistratorSettings>
+  <actualPassword/>
+  <backgroundColor>16777215</backgroundColor>
+  <backgroundImageURL/>
+  <backgroundType>0</backgroundType>
+  <closeProtected>true</closeProtected>
+  <connectColor>16777215</connectColor>
+  <copyright>Система управления очередью "АйТиСтройПроект"</copyright>
+  <host>localhost</host>
+  <includeTicketNumber>true</includeTicketNumber>
+  <includeTicketTime>true</includeTicketTime>
+  <line1FontSize>10</line1FontSize>
+  <line1Text>Система управления очередью</line1Text>
+  <line1Visible>true</line1Visible>
+  <line2FontSize>10</line2FontSize>
+  <line2Text>www.company.com</line2Text>
+  <line2Visible>true</line2Visible>
+  <port>8080</port>
+  <settingsProtected>true</settingsProtected>
+  <takeTicketText>Взять талон</takeTicketText>
+  <ticketBackground>13107200</ticketBackground>
+  <ticketBottomText>Режим работы пн.-пт. 9.00-18.00</ticketBottomText>
+  <ticketFont>Arial</ticketFont>
+  <ticketFontColor>65280</ticketFontColor>
+  <ticketHeight>120</ticketHeight>
+  <ticketWidth>400</ticketWidth>
+</RegistratorSettings>

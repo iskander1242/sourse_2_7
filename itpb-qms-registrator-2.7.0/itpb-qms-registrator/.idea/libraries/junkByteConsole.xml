@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="junkByteConsole" type="flex">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/junkByteConsole" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

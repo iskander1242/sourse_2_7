@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark" xmlns:controls="mx.controls.*" xmlns:ticket="view.takeTicket.*"
+        xmlns:background="view.background.*"
+
+        width="100%" height="100%"
+        creationComplete="creationCompleteHandler(event)">
+
+    <fx:Metadata>
+        <![CDATA[
+        [HostComponent("view.settings.tabs.AppearanceTab")]
+        ]]>
+    </fx:Metadata>
+
+    <fx:Declarations>
+        <s:RadioButtonGroup id="backgroundType"
+                            itemClick="hostComponent.changeBackgroundTypeHandler(event)"
+                            selectedIndex="{hostComponent.backgroundType}"/>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import model.consts.BackgroundType;
+
+        import mx.events.FlexEvent;
+
+        private var fr:FileReference;
+
+        protected function creationCompleteHandler(event:FlexEvent):void {
+            //--
+        }
+
+        public function browseForImage(event:MouseEvent):void {
+            fr = new File();
+            fr.addEventListener(Event.SELECT, onBackgroundFileSelected, false, 0, true);
+            var fileFilter:FileFilter = new FileFilter("Images: (*.jpg, *.gif, *.png)", "*.jpg; *.gif; *.png");
+            fr.browse([fileFilter]);
+        }
+
+        protected function onBackgroundFileSelected(event:Event):void {
+            hostComponent.backgroundImageURL = (event.target as File).nativePath;
+        }
+        ]]>
+	</fx:Script>
+
+    <s:states>
+        <s:State name="normal"/>
+        <s:State name="disabled"/>
+    </s:states>
+
+
+    <s:VGroup width="100%"
+              top="-6" right="4" bottom="4" left="4">
+
+        <s:Panel title="Заголовок в статусе программы"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      gap="20"
+                     top="20" right="18" bottom="20" left="18">
+                <s:HGroup verticalAlign="baseline"
+                        width="100%">
+                    <s:Label text="Текст"/>
+                    <s:TextInput id="statusTitle"
+                                 maxChars="500"
+                                 width="100%"
+                                 text="{hostComponent.copyright}"
+                                 change="hostComponent.copyrightChangedHandler(event)"/>
+                </s:HGroup>
+                <s:HGroup verticalAlign="baseline">
+                    <s:Label text="Цвет текста"/>
+                    <controls:ColorPicker id="statusTitleTextColor"
+                                          selectedColor="{hostComponent.copyrightTextColor}"
+                                          change="hostComponent.copyrightTextColorChanged(event)"/>
+                    <s:Spacer width="30"/>
+                    <s:Label text="Размер шрифта"/>
+                    <s:NumericStepper id="statusTextFontSize"
+                                    minimum="10" maximum="150" stepSize="1"
+                                    value="{hostComponent.copyrightTextFontSize}"
+                                    change="hostComponent.copyrightTextFontSizeHandler(event)"/>
+                </s:HGroup>
+
+            </s:VGroup>
+        </s:Panel>
+
+        <s:Panel title="Фон"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+                <s:HGroup id="plainBackGroundType">
+                    <s:RadioButton group="{backgroundType}"
+                                   selected="{hostComponent.backgroundType == BackgroundType.SOLID_COLOR}"
+                                   label="Однотонный"/>
+
+                    <controls:ColorPicker id="backgroundColorPicker"
+                                          enabled="{backgroundType.selectedIndex == 0}"
+                                          selectedColor="{hostComponent.backgroundColor}"
+                                          change="hostComponent.changeBackgroundColorHandler(event)"/>
+                </s:HGroup>
+
+                <s:HGroup id="bitmapBackgroundType">
+                    <s:RadioButton group="{backgroundType}"
+                                   selected="{hostComponent.backgroundType == BackgroundType.IMAGE}"
+                                   label="Картинка"/>
+                    <s:Button id="loadImageBtn"
+                              label="Добавить изображение"
+                              enabled="{backgroundType.selectedIndex == 1}"
+                              click="browseForImage(event)"/>
+                </s:HGroup>
+            </s:VGroup>
+        </s:Panel>
+
+        <s:Panel title="Кнопка"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:VGroup width="100%" height="100%"
+                      gap="20"
+                      top="20" bottom="20"
+                      left="18" right="18">
+                <s:HGroup width="100%"
+                          verticalAlign="baseline">
+                    <s:Label text="Текст на кнопке"/>
+                    <s:TextInput id="buttonText"
+                                 maxChars="500"
+                                 width="100%"
+                                 text="{hostComponent.takeTicketText}"
+                                 change="hostComponent.takeTicketTextChangedHandler(event)"/>
+                </s:HGroup>
+                <s:HGroup width="100%">
+
+                    <s:Group width="100%" height="100%"
+                             clipAndEnableScrolling="true">
+                        <background:BackgroundComponent id="backgroundComponent"
+                                                        width="100%" height="100%"
+                                                        skinClass="view.background.BackgroundSkin"/>
+                        <s:HGroup width="100%"
+                                  paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10"
+                                  horizontalAlign="center" verticalAlign="middle">
+                            <ticket:TakeTicketComponent id="ticketComponent"
+                                                    previewMode="true"
+                                                    skinClass="view.takeTicket.TakeTicketComponentSkin"/>
+                        </s:HGroup>
+                    </s:Group>
+
+                    <s:VGroup id="ticketSetupContainer">
+                        <s:HGroup verticalAlign="baseline">
+                            <s:Label text="Размер шрифта"/>
+                            <s:NumericStepper id="ticketTextFontSize"
+                                              minimum="10" maximum="150" stepSize="1"
+                                              value="{hostComponent.ticketTextFontSize}"
+                                              change="hostComponent.ticketTextFontSizeHandler(event)"/>
+                        </s:HGroup>
+                        <s:HGroup verticalAlign="baseline">
+                            <s:Label text="Цвет текста"/>
+                            <controls:ColorPicker id="ticketTextColor"
+                                                  selectedColor="{hostComponent.ticketFontColor}"
+                                                  change="hostComponent.ticketFontColorChanged(event)"/>
+                        </s:HGroup>
+
+                        <s:HGroup verticalAlign="baseline">
+                            <s:Label text="Шрифт"/>
+                            <s:DropDownList id="ticketFont"
+                                            width="100"
+                                            labelField="fontName"
+                                            dataProvider="{hostComponent.fontsListAC}"
+                                            selectedIndex="1"
+                                            change="hostComponent.ticketFontChanged(event)"/>
+
+                        </s:HGroup>
+
+                        <s:HGroup verticalAlign="baseline">
+                            <s:Label text="Цвет фона"/>
+                            <controls:ColorPicker id="ticketBackgroundColor"
+                                                  selectedColor="{hostComponent.ticketBackground}"
+                                                  change="hostComponent.ticketBackgroundChanged(event)"/>
+                        </s:HGroup>
+
+                        <s:VGroup>
+
+                            <s:HGroup verticalAlign="baseline">
+
+                                <s:VGroup gap="0">
+                                    <s:Label text="ширина"/>
+                                    <s:NumericStepper id="ticketWidth"
+                                                      minimum="100" maximum="800" stepSize="10"
+                                                      value="{hostComponent.ticketWidth}"
+                                                      change="hostComponent.ticketWidthHandler(event)"/>
+                                </s:VGroup>
+
+                                <s:VGroup gap="0">
+                                    <s:Label text="высота"/>
+                                    <s:NumericStepper id="ticketHeight"
+                                                      minimum="30" maximum="600" stepSize="10"
+                                                      value="{hostComponent.ticketHeight}"
+                                                      change="hostComponent.ticketHeightHandler(event)"/>
+                                </s:VGroup>
+
+                            </s:HGroup>
+
+                        </s:VGroup>
+                    </s:VGroup>
+                </s:HGroup>
+            </s:VGroup>
+        </s:Panel>
+
+        <s:Panel title="Защита паролем"
+                 width="100%"
+                 skinClass="view.settings.tabs.skins.PanelSkin">
+            <s:HGroup width="100%"
+                      top="20" right="18" bottom="20" left="18">
+                <s:CheckBox id="switchOffCheck"
+                            label="Завершение"
+                            selected="{hostComponent.closeProtected}"
+                            change="hostComponent.closeProtectedHandler(event)"/>
+                <s:CheckBox id="settingsCheck"
+                            label="Параметры"
+                            selected="{hostComponent.settingsProtected}"
+                            change="hostComponent.settingsProtectedHandler(event)"/>
+                <s:HGroup width="100%" horizontalAlign="right">
+                    <s:Button id="changePasswordBtn"
+                              label="Сменить пароль"
+                              click="hostComponent.changePasswordHandler(event)"/>
+                </s:HGroup>
+            </s:HGroup>
+        </s:Panel>
+
+    </s:VGroup>
+
+</s:Skin>
