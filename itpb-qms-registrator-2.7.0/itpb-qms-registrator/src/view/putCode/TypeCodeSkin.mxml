@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+  Created by designer4 on 13.07.14.
+-->
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:numpad="view.numpad.*"
+
+        creationComplete="creationCompleteHandler(event)"
+        width="100%" height="100%">
+
+    <fx:Metadata>
+        [HostComponent("view.putCode.TypeCodeComponent")]
+    </fx:Metadata>
+
+    <fx:Declarations>
+        <s:RadioButtonGroup id="activeKeyboard"
+                            itemClick="activeKeyboardHandler(event)"/>
+    </fx:Declarations>
+
+    <fx:Script><![CDATA[
+        import mx.events.FlexEvent;
+        import mx.events.ItemClickEvent;
+
+        import spark.events.TextOperationEvent;
+
+        import view.numpad.NumpadEvent;
+
+        private function creationCompleteHandler(e:FlexEvent):void {
+            numpadComponent.addEventListener(NumpadEvent.KEY, hostComponent.numpadEventHandler);
+            hostComponent.activeTextInput = oldPassword;
+        }
+
+        private function activeKeyboardHandler(e:ItemClickEvent):void {
+                    hostComponent.activeTextInput = oldPassword;
+
+        }
+
+        private function valueCommitHandler(e:FlexEvent):void {
+            hostComponent.oldPassword = oldPassword.text;
+        }
+
+        private function changeHandler(e:TextOperationEvent):void {
+            (e.target as TextInput).dispatchEvent( new FlexEvent(FlexEvent.VALUE_COMMIT) );
+        }
+
+        ]]></fx:Script>
+
+
+    <s:SkinnableContainer id="mainContainer" backgroundColor="0x808080" fontSize="16">
+    <s:VGroup id="container"
+              top="24" right="30" bottom="24" left="30"
+              gap="20"
+              >
+        <s:HGroup verticalAlign="baseline">
+            <s:Label text="Введите код"   />
+            <s:TextInput id="oldPassword"
+            text="{hostComponent.oldPassword}"
+            change="changeHandler(event)"
+            valueCommit="valueCommitHandler(event)" />
+        </s:HGroup>
+
+        <numpad:NumpadComponent id="numpadComponent"/>
+
+        <s:HGroup width="100%" horizontalAlign="center" gap="16">
+            <s:Button id="saveButton"
+                      label="Печать талона"
+                      click="hostComponent.submitHandler(event)" />
+            <s:Button id="cancelButton"
+                      label="Назад"
+                      click="hostComponent.cancelHandler(event)" />
+        </s:HGroup>
+
+    </s:VGroup>
+    </s:SkinnableContainer>
+</s:Skin>
