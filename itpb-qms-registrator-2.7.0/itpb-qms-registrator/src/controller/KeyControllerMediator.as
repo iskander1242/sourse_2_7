@@ -42,7 +42,9 @@ public class KeyControllerMediator extends Mediator {
     }
 
 	private function onOpenSettingsHandler():void {
-		openSettingsRequest.dispatch(true);
+		//openSettingsRequest.dispatch(true);  ss
+		openSettingsRequest.dispatch(false);
+
 	}
 
 	private function onCloseSettingsHandler():void{

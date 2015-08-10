@@ -35,7 +35,7 @@ public class OpenPincodeCommand extends Command {
 	}
 
 	override public function execute():void {
-		Cc.log(this, param_request);
+		Cc.log(this, "++++++++"+param_request);
 
 		popup = new PincodePopupComponent();
 		popup.onSuccessRequest = param_request;

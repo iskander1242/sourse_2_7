@@ -26,6 +26,8 @@ public class SettingsVO extends EventDispatcher {
 	public var ticketFont:String;
 	public var ticketFontColor:uint;
 	public var ticketBackground:uint;
+
+	public var takeTalonText:String;
 	// Passwords
 	//TODO add passwords protection feature
 	public var actualPassword:String;

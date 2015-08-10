@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <local:RegistratorApp xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-                      xmlns:local="*" xmlns:ticket="view.takeTicket.*" xmlns:view="view.*" xmlns:controller="controller.*"
+                      xmlns:local="*" xmlns:ticket="view.takeTicket.*"
+                      xmlns:talon="view.takeTalon.*"
+                      xmlns:test="view.test.*"
+                      xmlns:view="view.*" xmlns:controller="controller.*"
                       xmlns:background="view.background.*"
                       xmlns:copyright="view.copyright.*" xmlns:applicationquit="view.ApplicationQuit.*"
                       width="100%" height="100%"
@@ -25,13 +28,20 @@
                                     skinClass="view.background.BackgroundSkin"/>
 
     <s:VGroup id="mainContainer"
-              gap="40"
+              gap="10"
               horizontalCenter="0" verticalCenter="0"
               horizontalAlign="center">
 
         <ticket:TakeTicketComponent id="ticketComponent"
                                 skinClass="view.takeTicket.TakeTicketComponentSkin"/>
+        <test:TakeTicketComponent id="talonComponent2"
+                                    skinClass="view.test.TakeTicketComponentSkin"/>
 
+       <s:Button id="button" click="{
+        mainContainer.removeElement(ticketComponent);
+        mainContainer.removeElement(talonComponent2);
+        mainContainer.removeElement(button);
+       }">1111</s:Button>
     </s:VGroup>
 
     <copyright:CopyrightComponent id="copyright"

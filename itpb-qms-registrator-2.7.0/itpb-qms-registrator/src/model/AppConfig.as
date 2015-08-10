@@ -61,7 +61,9 @@ import view.background.BackgroundComponent;
 import view.background.BackgroundMediator;
 import view.copyright.CopyrightComponent;
 import view.copyright.CopyrightMediator;
-    /*import view.errorMessage.ErrorMessageComponent;
+import view.test.TakeTicketComponent;
+
+/*import view.errorMessage.ErrorMessageComponent;
     import view.errorMessage.ErrorMessageMediator;*/
     import view.pincodePopup.PincodePopupComponent;
 import view.pincodePopup.PincodePopupMediator;
@@ -73,7 +75,6 @@ import view.settings.tabs.CommunicationsTab;
 import view.settings.tabs.CommunicationsTabMediator;
 import view.settings.tabs.TicketTab;
 import view.settings.tabs.TicketTabMediator;
-import view.takeTicket.TakeTicketComponent;
 import view.takeTicket.TakeTicketMediator;
 
 public class AppConfig implements IConfig {
@@ -109,10 +110,11 @@ public class AppConfig implements IConfig {
 
 	private function mediators():void {
 		mediatorMap.map(PreStartController).toMediator(PreStartMediator);
-		mediatorMap.map(TakeTicketComponent).toMediator(TakeTicketMediator);
+		mediatorMap.map(view.takeTicket.TakeTicketComponent).toMediator(view.takeTicket.TakeTicketMediator);
 		mediatorMap.map(KeyController).toMediator(KeyControllerMediator);
         mediatorMap.map( ServerConnectionController ).toMediator( ServerConnectionMediator );
 
+		mediatorMap.map(view.test.TakeTicketComponent).toMediator(view.test.TakeTicketMediator);
         //mediatorMap.map( ErrorMessageComponent ).toMediator( ErrorMessageMediator );
 
 		// Settings mapping

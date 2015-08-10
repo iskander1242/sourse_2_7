@@ -25,4 +25,5 @@
   <ticketFontColor>65280</ticketFontColor>
   <ticketHeight>120</ticketHeight>
   <ticketWidth>400</ticketWidth>
+  <takeTalonText>Предварительная регистрация</takeTalonText>
 </RegistratorSettings>
