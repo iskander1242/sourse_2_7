@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <local:RegistratorApp xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
                       xmlns:local="*" xmlns:ticket="view.takeTicket.*"
-                      xmlns:talon="view.takeTalon.*"
-                      xmlns:test="view.test.*"
+                      xmlns:test="view.takeTalon.*"
                       xmlns:view="view.*" xmlns:controller="controller.*"
                       xmlns:background="view.background.*"
                       xmlns:copyright="view.copyright.*" xmlns:applicationquit="view.ApplicationQuit.*"
@@ -12,9 +11,29 @@
     <fx:Script><![CDATA[
         import mx.events.FlexEvent;
 
+        import spark.components.Alert;
+
+        import view.ChangePassword.ChangePasswordComponent;
+        import view.putCode.TypeCodeComponent;
+
         protected function applicationCompleteHandler(e:FlexEvent):void {
-            this.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
-            //Mouse.hide();
+            this.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE; //Mouse.hide();
+
+        }
+
+        public var cp:view.putCode.TypeCodeComponent = new view.putCode.TypeCodeComponent();
+
+        public function addChangePasswordComponent():void {
+            mainContainer.removeAllElements();
+            cp.setCommand=closeCommand;
+            mainContainer.addElement(cp);
+        }
+
+        public function closeCommand():void {
+            mainContainer.removeAllElements();
+            mainContainer.addElement(ticketComponent);
+            mainContainer.addElement(talonComponent1);
+            mainContainer.addElement(talonComponent2);
         }
         ]]></fx:Script>
 
@@ -28,19 +47,23 @@
                                     skinClass="view.background.BackgroundSkin"/>
 
     <s:VGroup id="mainContainer"
-              gap="10"
+              gap="5"
               horizontalCenter="0" verticalCenter="0"
               horizontalAlign="center">
 
         <ticket:TakeTicketComponent id="ticketComponent"
                                 skinClass="view.takeTicket.TakeTicketComponentSkin"/>
-        <test:TakeTicketComponent id="talonComponent2"
-                                    skinClass="view.test.TakeTicketComponentSkin"/>
+        <test:TakeTalonComponent id="talonComponent1"
+                                    skinClass="view.takeTalon.TakeTalonComponentSkin" addedToStage="{
+                                    talonComponent1.setTakeTicketText='Предварительная запись';
+                                    }"/>
+        <test:TakeTalonComponent id="talonComponent2"
+                                 skinClass="view.takeTalon.TakeTalonComponentSkin" addedToStage="{
+                                    talonComponent2.setTakeTicketText='Активировать \n предварительный талон';
+                                    talonComponent2.setCurrentAction=addChangePasswordComponent}"/>
 
        <s:Button id="button" click="{
-        mainContainer.removeElement(ticketComponent);
-        mainContainer.removeElement(talonComponent2);
-        mainContainer.removeElement(button);
+        mainContainer.removeAllElements();
        }">1111</s:Button>
     </s:VGroup>
 

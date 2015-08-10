@@ -53,6 +53,7 @@ import robotlegs.bender.framework.api.IInjector;
 
 import view.ApplicationQuit.ApplicationQuitComponent;
 import view.ApplicationQuit.ApplicationQuitMediator;
+import view.ChangePassword.ChangePasswordComponent;
 
 import view.ChangePassword.ChangePasswordComponent;
 import view.ChangePassword.ChangePasswordMediator;
@@ -61,7 +62,8 @@ import view.background.BackgroundComponent;
 import view.background.BackgroundMediator;
 import view.copyright.CopyrightComponent;
 import view.copyright.CopyrightMediator;
-import view.test.TakeTicketComponent;
+import view.putCode.TypeCodeComponent;
+import view.takeTalon.TakeTalonComponent;
 
 /*import view.errorMessage.ErrorMessageComponent;
     import view.errorMessage.ErrorMessageMediator;*/
@@ -114,7 +116,7 @@ public class AppConfig implements IConfig {
 		mediatorMap.map(KeyController).toMediator(KeyControllerMediator);
         mediatorMap.map( ServerConnectionController ).toMediator( ServerConnectionMediator );
 
-		mediatorMap.map(view.test.TakeTicketComponent).toMediator(view.test.TakeTicketMediator);
+		mediatorMap.map(view.takeTalon.TakeTalonComponent).toMediator(view.takeTalon.TakeTalonMediator);
         //mediatorMap.map( ErrorMessageComponent ).toMediator( ErrorMessageMediator );
 
 		// Settings mapping
@@ -127,7 +129,9 @@ public class AppConfig implements IConfig {
 		mediatorMap.map(BackgroundComponent).toMediator(BackgroundMediator);
 		mediatorMap.map(CopyrightComponent).toMediator(CopyrightMediator);
 		mediatorMap.map(PincodePopupComponent).toMediator(PincodePopupMediator);
-		mediatorMap.map(ChangePasswordComponent).toMediator(ChangePasswordMediator);
+		mediatorMap.map(view.ChangePassword.ChangePasswordComponent).toMediator(view.ChangePassword.ChangePasswordMediator);
+
+		mediatorMap.map(view.putCode.TypeCodeComponent).toMediator(view.putCode.TypeCodeMediator);
 
 		mediatorMap.map(ApplicationQuitComponent).toMediator(ApplicationQuitMediator);
 	}
